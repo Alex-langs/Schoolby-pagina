@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Preguntas</title>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/Estiloss.css">
+</head>
+<body>
+
+	<header>
+   <nav>
+	<section class="contenedor nav">
+		<div class="logo">
+			<img src="img/logo schoolby.jpg" alt="">
+		</div>
+		<div class="enlaces-header">
+        <a href="./SchoolBy.html">Inicio</a>
+        <a href="./Preguntas.html">Actividades</a>
+        <a href="#">Contacto</a>
+        <a href="#">Eventos</a>
+		<a href="#">Registrate</a>
+	</div>
+		<div class="hamburguer">
+			<i class="fas fa-bars"></i>
+		</div>
+	</section>
+    </nav>
+	<div class="contenedor">
+		<section class="contenido-header">
+			<section class="textos-header">
+				<h1>Preguntas de inicio</h1>
+				<p>Esto se basa para saber como estamos de conocimiento.</p>
+				<a href="#">Saber mas</a>
+			</section>
+			<img src="img/undraw_online_test_gba7.svg" alt="">
+		</section>
+	</div>
+</header>
+
+
+<section class="Preguntas">
+    <div class="contenedor1">
+		<h2 class="titulo">Preguntas</h2>
+	
+
+
+<main>
+    
+       <article class="triv">
+				<div class="trivi">
+				<div class="pres" id="pregunta"></div>
+	            <div  class="pre" id="respuestas"></div>
+	            <br>
+	            <input class="btn" type="button" value="Comprobar" onclick="comprobar ()" name="">
+	            </div>
+			</article>
+			
+			</body>
+			</html>
+    </section>
+   
+</main>
+
+<footer>
+	<div class="partFooter">
+        <img src="img/logo schoolby.jpg" alt="">
+    </div>
+    <div class="partFooter">
+        <h4>Servicios</h4>
+        <a href="#">Contactenos</a>
+        <a href="#">Mas sobre</a>
+        <a href="#">Ayuda</a>
+    </div>
+    <div class="partFooter">
+        <h4>Acerca de</h4>
+        <a href="#">Descubra SchoolBy</a>
+        <a href="#">Sobre SchoolBy</a>
+        <a href="#">Autor</a>
+    </div>
+    <div class="partFooter">
+        <h4>Redes sociales</h4>
+        <div class="social-media">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+        </div>
+    </div>
+   
+</footer>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script>
+	var preguntas = [
+	"¿Cuántos meses tienen 28 días?",
+	"¿Qué puedes encontrar en medio de cada mes?",
+	"¿Cuál es la forma correcta de escribir “durmiendo”?", 
+	"¿De qué color son las mangas del chaleco rojo de Eduardo?",
+	"¿Como puede estar alguien sin dormir diez días y no tener sueño?",
+
+	];
+	var respuestas = [
+	["Todos","1","2"],
+	["Letras e","Dias","Suceso importante"],
+	["Despierto","Derecho","Al revez"], ["Ninguno", "Azul", "Rojo"],
+	["Estar despierto", "Tomando agua", "Tomando cafe"]
+
+	];
+
+	jugar();
+
+	var indice_respuesta_correcta;
+
+	function jugar (){
+			var indice_aleatorio = Math.floor(Math.random()*preguntas.length);
+
+	var respuestas_posibles = respuestas[indice_aleatorio];
+
+	var posiciones = [0,1,2];
+	var respuestas_reordenadas = [];
+
+	var ya_se_metio = false;
+	
+	for(i in respuestas_posibles){
+		var posicion_aleatoria = Math.floor(Math.random()*posiciones.length);
+		if (posicion_aleatoria==0 && ya_se_metio == false){
+			indice_respuesta_correcta = i;
+			ya_se_metio = true;
+		}
+		respuestas_reordenadas[i] = respuestas_posibles[posiciones[posicion_aleatoria]];
+		posiciones.splice(posicion_aleatoria, 1);
+	}
+
+	var txt_respuestas="";
+
+	for (i in respuestas_reordenadas){
+		txt_respuestas += '<input type="radio" name="pp" value='+i+'><label>'+respuestas_reordenadas[i]+'</label><br>';
+	}
+
+	document.getElementById("pregunta").innerHTML = preguntas[indice_aleatorio];
+	document.getElementById("respuestas").innerHTML = txt_respuestas;
+	}
+	function comprobar (){
+		var respuesta = $("input[type=radio]:checked").val();
+		if (respuesta==indice_respuesta_correcta){
+			alert("Muy bien!");
+		}else{
+			alert("Intentalo de nuevo");
+		}
+		jugar();
+	}
+</script>
+</div>
+</section>
+
